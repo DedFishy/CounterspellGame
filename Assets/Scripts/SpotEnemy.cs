@@ -11,10 +11,14 @@ public class SpotEnemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        if (player == null) {
+            player = GameObject.Find("Player");
+        }
         animator = GetComponent<Animator>();
         targetLayerMask = LayerMask.GetMask("Player", "Level");
         spotRigidbody = GetComponent<Rigidbody>();
         controller = player.GetComponent<PlayerController>();
+
     }
 
     bool IsPlayerInLineOfSight() {
